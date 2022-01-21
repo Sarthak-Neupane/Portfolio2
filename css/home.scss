@@ -1,0 +1,25 @@
+@use 'base';
+
+.content {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  .content__button {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: 0;
+    color: #151516;
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-family: titling-gothic-fb-wide, sans-serif;
+    font-weight: 700;
+    position: relative;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
