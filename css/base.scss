@@ -1,5 +1,16 @@
-$background-color: #151516;
-$primary-color: #f7f7f7;
+@font-face {
+  font-family: "party_confettiregular";
+  src: url("../fonts/party_confetti/partyconfettiregular-ezon3-webfont.woff2")
+      format("woff2"),
+    url("../fonts/party_confetti/partyconfettiregular-ezon3-webfont.woff")
+      format("woff");
+}
+
+$p-background-color: #151516;
+$p-color: #f7f7f7;
+$s-color: #ef572d;
+$p-font-family: "party_confettiregular", sans-serif;
+
 
 * {
   padding: 0;

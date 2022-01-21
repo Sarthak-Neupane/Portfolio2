@@ -8,24 +8,27 @@ export default class Explode {
     this.enterCtrl = options.button;
     this.isOpen = false;
 
-    this.init()
-    this.mouseEvent()
-    this.draw()
-    this.enterCtrl.addEventListener("click", this.clickBtn.bind(this))
-    this.enterCtrl.addEventListener("mouseenter", this.mouseEntering.bind(this))
-    this.enterCtrl.addEventListener("mouseleave", this.mouseLeaving.bind(this))
+    this.init();
+    this.mouseEvent();
+    this.draw();
+    this.enterCtrl.addEventListener("click", this.clickBtn.bind(this));
+    this.enterCtrl.addEventListener(
+      "mouseenter",
+      this.mouseEntering.bind(this)
+    );
+    this.enterCtrl.addEventListener("mouseleave", this.mouseLeaving.bind(this));
   }
 
   init() {
     this.animation = new Sketch("container", {
-      surface: "ffe2e2",
-      inside: "f56969",
+      surface: "111111",
+      inside: "ef572d",
       background: "151516",
       onLoad: () => {
         document.body.classList.remove("loading");
       },
     });
-    console.log(this.animation)
+    console.log(this.animation);
     this.animation.camera.position.z = 500;
   }
 
@@ -64,18 +67,19 @@ export default class Explode {
           this.enterCtrl.style.display = "none";
         },
       })
-      .to(this.animation.camera.position, {
-        duration: 1,
-        z: 700,
-      })
       .to(
-        this.animation.settings,
+        this.animation.camera.position,
         {
-          progress: 1,
-          duration: 20,
-          ease: "expo.out",
+          duration: 1,
+          z: 700,
         },
-      );
+        "-=.3"
+      )
+      .to(this.animation.settings, {
+        progress: 2,
+        duration: 15,
+        ease: "expo.out",
+      });
   }
 
   mouseEntering() {
@@ -84,7 +88,7 @@ export default class Explode {
       this.animation.camera.position,
       {
         duration: 1,
-        z: 400,
+        z: 450,
         ease: "expo.out",
       },
       0
@@ -104,4 +108,3 @@ export default class Explode {
     );
   }
 }
-
