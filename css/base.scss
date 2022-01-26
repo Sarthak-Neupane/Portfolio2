@@ -27,7 +27,17 @@ $p-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   box-sizing: border-box;
 }
 
-#container {
+
+#canvasContainer img{
+	visibility: hidden;
+	pointer-events: none;
+	position: absolute;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+#container, #canvasContainer {
   width: 100vw;
   height: 100vh;
   left: 0;

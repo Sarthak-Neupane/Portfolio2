@@ -1,7 +1,7 @@
 import gsap from "gsap";
+
 import Explode from "./new-explode";
 import microAnimHome from "./microAnimHome";
-
 class Main {
   constructor(options) {
     this.options = options;
