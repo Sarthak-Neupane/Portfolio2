@@ -1,5 +1,4 @@
 import Sketch from "../lib/js/ico";
-import Open from "./opening";
 import gsap from "gsap";
 
 const sign = (n) => (n === 0 ? 1 : n / Math.abs(n));
@@ -22,38 +21,39 @@ export default class Explode {
 
   init() {
     this.animation = new Sketch("container", {
-      surface: "400400",
-      inside: "ffffff",
-      background: "000000",
+      surface: "EF572D",
+      inside: "e8e8e8",
+      background: "151616",
       onLoad: () => {
         document.body.classList.remove("loading");
       },
     });
     console.log(this.animation);
-    this.animation.camera.position.z = 500;
   }
-
   mouseEvent() {
-    (this.targetMouseX = 0), (this.mouseX = 0), (this.ta = 0);
-    document.addEventListener("mousemove", (e) => {
-      this.targetMouseX =
-        (2 * (e.clientX - this.animation.width / 2)) / this.animation.width;
+    this.targetMouseX = 0, this.mouseX = 0, this.targetMouseY = 0, this.mouseY = 0, this.ta = 0, this.taY = 0;
+
+    document.addEventListener('mousemove',(e) => {
+        this.targetMouseX = 2*(e.clientX - this.animation.width/2)/this.animation.width;
+        this.targetMouseY = 2*(e.clientY - this.animation.height/2)/this.animation.height
     });
-    document.addEventListener("touchmove", (e) => {
-      this.targetMouseX = (e.touches[0].clientX / this.animation.width) * 2 - 1;
+    document.addEventListener('touchmove', (e) => {
+        this.targetMouseX = ( e.touches[0].clientX / this.animation.width ) * 2 - 1;
+        this.targetMouseY = ( e.touches[0].clientY / this.animation.height ) * 2 - 1;
     });
   }
 
   draw() {
-    if (this.animation) {
-      this.mouseX += (this.targetMouseX - this.mouseX) * 0.05;
-      this.ta = Math.abs(this.mouseX);
-      this.animation.scene.rotation.y =
-        0.2 * -this.ta * (2 - this.ta) * Math.PI * sign(this.mouseX);
-      this.animation.scene.rotation.z =
-        0.2 * -this.ta * (2 - this.ta) * Math.PI * sign(this.mouseX);
-    }
-    window.requestAnimationFrame(this.draw.bind(this));
+    if ( this.animation ) {
+            this.mouseX += (this.targetMouseX - this.mouseX)*0.05;
+            this.mouseY += (this.targetMouseY - this.mouseY)*0.05;
+            this.ta = Math.abs(this.mouseX);
+            this.taY = Math.abs(this.mouseY);
+            this.animation.scene.rotation.x = Math.PI/2 - this.taY*(2 - this.taY)*Math.PI * sign(this.mouseY);
+            this.animation.scene.rotation.y = Math.PI/2 - this.ta*(2 - this.ta)*Math.PI * sign(this.mouseX);
+            this.animation.scene.rotation.z = Math.PI/2 - this.ta*(2 - this.ta)*Math.PI * sign(this.mouseX);
+        }
+        window.requestAnimationFrame(this.draw.bind(this));
   }
 
   clickBtn() {
@@ -71,23 +71,23 @@ export default class Explode {
       .to(
         this.animation.camera.position,
         {
-          duration: 1,
-          z: 700,
+          duration: .5,
+          z: 10,
         },
         "-=.3"
       )
       .to(this.animation.settings, {
-        progress: 1,
-        duration: 15,
+        progress: 2,
+        duration: 4,
         ease: "expo.out",
       })
       .to(".home__title", {
+        scale: 1,
         opacity: 1,
-        y: 0,
-        stagger: {
-          each: 0.1,
+        stagger:{
+          each: 0.05
         }
-      }, "-=14.5")
+      }, "-=3.5")
   }
 
   mouseEntering() {
@@ -96,7 +96,7 @@ export default class Explode {
       this.animation.camera.position,
       {
         duration: 1,
-        z: 475,
+        z: 5.5,
         ease: "expo.out",
       },
       0
@@ -109,7 +109,7 @@ export default class Explode {
       this.animation.camera.position,
       {
         duration: 1,
-        z: 500,
+        z: 7,
         ease: "expo.out",
       },
       0

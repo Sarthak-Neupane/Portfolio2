@@ -1,5 +1,6 @@
 import gsap from "gsap";
-import Explode from "./explode";
+import Explode from "./new-explode";
+import Open from './opening'
 
 class Main {
   constructor(options) {
@@ -17,5 +18,5 @@ class Main {
 
 
 new Main({
-    button: document.querySelector(".content__button"),
+    button: document.querySelector(".home__button"),
 })

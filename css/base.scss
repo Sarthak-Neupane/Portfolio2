@@ -6,10 +6,11 @@
       format("woff");
 }
 
-$p-background-color: #151516;
-$p-color: #f7f7f7;
-$s-color: #ef572d;
+$p-background-color: #e8e8e8;
+$p-color: #dddddd;
+$s-color: #EF572D;
 $p-font-family: "party_confettiregular", sans-serif;
+$s-font-family: 'Arial'; 
 
 
 * {
@@ -29,4 +30,31 @@ $p-font-family: "party_confettiregular", sans-serif;
 
 canvas {
   display: block;
+}
+
+.nav{
+  position: fixed;
+  top: 7%;
+  left: 0;
+  height: 5vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+
+  ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+    width: 80%;
+
+    a{
+      text-decoration: none;
+      color: $p-color;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+  }
 }
