@@ -86,7 +86,13 @@ export default class Explode {
         opacity: 1,
         stagger:{
           each: 0.05
-        }
+        },
+      }, "-=3.5")
+      .to(document.querySelectorAll('.after_title_anim'), {
+        opacity: 1,
+      }, "-=3.5")
+      .to(document.querySelectorAll('.social__links'), {
+        y: 0,
       }, "-=3.5")
   }
 

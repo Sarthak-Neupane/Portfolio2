@@ -1,4 +1,8 @@
-@use 'base';
+@use "base";
+
+html, body{
+  overflow: hidden;
+}
 
 .content {
   height: 100vh;
@@ -12,7 +16,7 @@
     color: base.$p-color;
     cursor: pointer;
     font-size: 3rem;
-    font-family :Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, "Times New Roman", Times, serif;
     position: absolute;
     top: 80%;
     left: 50%;
@@ -24,32 +28,47 @@
   }
 }
 
-.content__inner{
+.content__inner {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 100%;
-  width: 100%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
 
-  .head__title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .home__subtitle {
+    width: 100%;
+    opacity: 0;
+
+    h3 {
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-weight: 300;
+      position: relative;
+      color: base.$p-color;
+
+    }
   }
 
-  h1{
+  .head__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  h1 {
     font-family: base.$s-font-family;
-    font-weight: 900;
-    font-size: 9rem;
-    letter-spacing: .5rem;
+    font-weight: 500;
+    font-size: 8.6rem;
     color: base.$p-color;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    transform: scale(0);
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    letter-spacing: -0.2rem;
     opacity: 0;
     pointer-events: none;
-
-    &.secondary{
-      color: base.$s-color
-    }
   }
 }
