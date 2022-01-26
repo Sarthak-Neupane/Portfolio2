@@ -46,11 +46,10 @@ html, body{
     opacity: 0;
 
     h3 {
-      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-family: base.$p-font-family;
       font-weight: 300;
       position: relative;
       color: base.$p-color;
-
     }
   }
 
@@ -66,9 +65,20 @@ html, body{
     font-weight: 500;
     font-size: 8.6rem;
     color: base.$p-color;
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-family: base.$p-font-family;
     letter-spacing: -0.2rem;
     opacity: 0;
     pointer-events: none;
+    
+    &.second__home__title{
+      position: relative;
+      overflow: hidden;
+
+      span.primary{
+        position: absolute;
+        top: 100%;
+        left: 0;
+      }
+    }
   }
 }

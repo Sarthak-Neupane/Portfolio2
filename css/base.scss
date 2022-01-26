@@ -9,8 +9,8 @@
 $p-background-color: #e8e8e8;
 $p-color: #dddddd;
 $s-color: #EF572D;
-$p-font-family: "party_confettiregular", sans-serif;
-$s-font-family: 'Arial'; 
+$s-font-family: "party_confettiregular", sans-serif;
+$p-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
 
 
 @mixin pos($top: 0%) {
@@ -59,7 +59,7 @@ canvas {
       position: relative;
       text-decoration: none;
       color: $p-color;
-      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-family: $p-font-family;
     }
   }
 }
@@ -70,7 +70,7 @@ canvas {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: $p-font-family;
   overflow: hidden;
 
   .name{
