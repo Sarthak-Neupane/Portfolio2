@@ -8,10 +8,9 @@
 
 $p-background-color: #e8e8e8;
 $p-color: #dddddd;
-$s-color: #EF572D;
+$s-color: #ef572d;
 $s-font-family: "party_confettiregular", sans-serif;
-$p-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
-
+$p-font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 
 @mixin pos($top: 0%) {
   position: fixed;
@@ -27,17 +26,17 @@ $p-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   box-sizing: border-box;
 }
 
-
-#canvasContainer img{
-	visibility: hidden;
-	pointer-events: none;
-	position: absolute;
+#canvasContainer img {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
   object-fit: cover;
   height: 100%;
   width: 100%;
 }
 
-#container, #canvasContainer {
+#container,
+#canvasContainer {
   width: 100vw;
   height: 100vh;
   left: 0;
@@ -50,14 +49,14 @@ canvas {
   display: block;
 }
 
-.nav{
+.nav {
   @include pos($top: 7%);
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
 
-  ul{
+  ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -65,7 +64,7 @@ canvas {
     height: 100%;
     width: 100%;
 
-    a{
+    a {
       position: relative;
       text-decoration: none;
       color: $p-color;
@@ -74,7 +73,7 @@ canvas {
   }
 }
 
-.foot{
+.foot {
   @include pos($top: 92%);
   color: $p-color;
   display: flex;
@@ -83,15 +82,14 @@ canvas {
   font-family: $p-font-family;
   overflow: hidden;
 
-  .name{
+  .name {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     transform: translateY(100%);
 
-
-    h3{
+    h3 {
       font-weight: 300;
       height: 5vh;
       display: flex;
@@ -102,13 +100,13 @@ canvas {
     }
   }
 
-  ul{
+  ul {
     display: flex;
     list-style: none;
     gap: 2rem;
     height: 100%;
 
-    li{
+    li {
       cursor: pointer;
       height: 100%;
       display: flex;
@@ -116,16 +114,16 @@ canvas {
       align-items: center;
       transform: translateY(100%);
       position: relative;
-      padding: 0 .2rem;
+      padding: 0 0.2rem;
     }
   }
 }
 
-.secondary{
+.secondary {
   color: $s-color;
 }
 
-.line{
+.line {
   position: absolute;
   top: 45%;
   left: -5%;
@@ -135,4 +133,18 @@ canvas {
   transform: scaleX(0);
   transform-origin: left;
   background-color: $s-color;
+}
+
+.back-button {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+
+  a {
+    position: relative;
+    text-decoration: none;
+    color: $p-color;
+    font-family: $p-font-family;
+    font-size: 1.6rem;
+  }
 }
