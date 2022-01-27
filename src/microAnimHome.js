@@ -9,7 +9,7 @@ export default function microAnimHome() {
     const secondHomeTitle = document.querySelector(
       ".second__home__title .secondary"
     );
-    console.log(secondHomeTitle);
+    // console.log(secondHomeTitle);
 
     secondHomeTitle.addEventListener("mouseenter", (e) => {
       console.log(e);
@@ -31,7 +31,6 @@ export default function microAnimHome() {
     });
     pageLinks.forEach((link) => {
       link.addEventListener("mouseenter", (e) => {
-        console.log(e.target.firstChild.lastChild);
         gsap.to(e.target.firstChild.lastChild, {
           duration: 0.2,
           scaleX: 1,

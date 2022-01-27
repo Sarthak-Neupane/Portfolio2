@@ -6,9 +6,11 @@ function clamp(number, min, max) {
   return Math.max(min, Math.min(number, max));
 }
 
-export default class Distorted {
+export default class About {
   constructor(options) {
     this.scene = new THREE.Scene();
+
+    console.log(options)
 
     this.container = options.dom;
     this.img = this.container.querySelector('img')
@@ -177,7 +179,6 @@ export default class Distorted {
 
     this.regenerateGrid()
     let texture = new THREE.TextureLoader().load(this.img.src);
-    console.log(texture)
     // texture.needsUpdate = true;
     this.material = new THREE.ShaderMaterial({
       extensions: {
@@ -207,7 +208,6 @@ export default class Distorted {
     this.plane = new THREE.Mesh(this.geometry, this.material);
     this.scene.add(this.plane);
 
-    console.log(this)
   }
 
 
@@ -260,7 +260,3 @@ export default class Distorted {
     this.renderer.render(this.scene, this.camera);
   }
 }
-
-new Distorted({
-  dom: document.getElementById("canvasContainer")
-});
