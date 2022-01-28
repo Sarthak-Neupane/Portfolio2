@@ -6,17 +6,26 @@ const sign = (n) => (n === 0 ? 1 : n / Math.abs(n));
 export default class HOME {
   constructor(options) {
     this.enterCtrl = options.button;
+    this.fr = options.forceReload;
+
+    console.log(this.fr)
+
     this.isOpen = false;
 
     this.init();
     this.mouseEvent();
     this.draw();
-    this.enterCtrl.addEventListener("click", this.clickBtn.bind(this));
     this.enterCtrl.addEventListener(
       "mouseenter",
       this.mouseEntering.bind(this)
     );
     this.enterCtrl.addEventListener("mouseleave", this.mouseLeaving.bind(this));
+
+    if (this.fr) {
+      this.enterCtrl.addEventListener("click", this.clickBtn.bind(this));
+    } else {
+      this.clickBtn();
+    }
   }
 
   init() {
@@ -25,7 +34,12 @@ export default class HOME {
       inside: "e8e8e8",
       background: "151616",
       onLoad: () => {
-        document.body.classList.remove("loading");
+        setTimeout(()=>{
+          gsap.to('.loadingContainer', {
+            opacity: 0,
+            pointerEvents: 'none',
+          })
+        }, 300)
       },
     });
   }
@@ -70,15 +84,8 @@ export default class HOME {
     this.isOpen = true;
 
     this.timeline = new gsap.timeline();
+    this.enterCtrl.style.display = "none";
     this.timeline
-      .to(this.enterCtrl, {
-        opacity: 0,
-        duration: 0.3,
-        ease: "expo.out",
-        onComplete: () => {
-          this.enterCtrl.style.display = "none";
-        },
-      })
       .to(
         this.animation.camera.position,
         {

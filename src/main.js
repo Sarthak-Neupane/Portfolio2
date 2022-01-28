@@ -17,8 +17,9 @@ class Main {
 
     console.log(window.location.pathname);
 
+
     if (window.location.pathname === "/index.html" || window.location.pathname === "/") {
-      this.homeAnim();
+      this.homeAnim(true);
       microAnimHome();
     }
 
@@ -69,7 +70,7 @@ class Main {
             })
           },
           enter: (t) => {
-            this.homeAnim();
+            this.homeAnim(false);
             microAnimHome();
           },
         },
@@ -77,9 +78,10 @@ class Main {
     });
   }
 
-  homeAnim() {
+  homeAnim(fr) {
     this.home = new Home({
       button: document.querySelector(".home__button"),
+      forceReload: fr
     });
   }
 
