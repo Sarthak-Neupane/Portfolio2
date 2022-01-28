@@ -26,6 +26,21 @@ $p-font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   box-sizing: border-box;
 }
 
+.curtain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
+  transform: scaleY(0);
+  transform-origin: bottom;
+
+  &.full {
+    transform: scaleY(1);
+  }
+}
+
 #canvasContainer img {
   visibility: hidden;
   pointer-events: none;
@@ -43,6 +58,7 @@ $p-font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   top: 0;
   position: fixed;
   z-index: -1;
+  overflow: hidden;
 }
 
 canvas {

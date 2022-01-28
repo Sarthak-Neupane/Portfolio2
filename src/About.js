@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import fragment from "../lib/shaders/about/fragment.glsl";
 import vertex from "../lib/shaders/about/vertex.glsl";
+import aboutEnter from "../Animations/aboutEnter";
 
 function clamp(number, min, max) {
   return Math.max(min, Math.min(number, max));
@@ -10,7 +11,9 @@ export default class About {
   constructor(options) {
     this.scene = new THREE.Scene();
 
-    console.log(options)
+    this.fr = options.forceReload;
+    console.log(this.fr)
+
 
     this.container = options.dom;
     this.img = this.container.querySelector('img')
@@ -49,13 +52,16 @@ export default class About {
     }
 
     this.isPlaying = true;
-    this.settings();
-    this.addObjects();
-    this.resize();
-    this.render();
-    this.setupResize();
 
-    this.mouseEvents()
+    aboutEnter(document).then(()=>{
+      this.settings();
+      this.addObjects();
+      this.resize();
+      this.render();
+      this.setupResize();
+  
+      this.mouseEvents()
+    })
 
   }
 

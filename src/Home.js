@@ -28,7 +28,6 @@ export default class HOME {
         document.body.classList.remove("loading");
       },
     });
-    console.log(this.animation);
   }
   mouseEvent() {
     (this.targetMouseX = 0),

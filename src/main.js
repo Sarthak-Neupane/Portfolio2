@@ -6,6 +6,8 @@ import About from "./About";
 import microAnimHome from "./microAnimHome";
 
 import homeLeave from "../Animations/homeLeave";
+import aboutEnter from "../Animations/aboutEnter";
+import aboutLeave from "../Animations/aboutLeave";
 
 class Main {
   constructor() {
@@ -21,12 +23,11 @@ class Main {
     }
 
     if (window.location.pathname === "/about.html") {
-      this.aboutAnim();
+      this.aboutAnim(true);
     }
   }
 
   init() {
-    console.log("hello");
     barba.init({
       transitions: [
         {
@@ -37,11 +38,20 @@ class Main {
             namespace: ["about"],
           },
           leave: (t) => {
-            console.log(t);
-            homeLeave(this.homeAnim());
+            console.log(t.current)
+            return new Promise((resolve) => {
+              homeLeave(this.home, t.current.container).then(() => {
+                resolve()
+              })
+            });
           },
           enter: (t) => {
-            this.aboutAnim();
+            this.aboutAnim(false);
+            return new Promise((resolve) => {
+              aboutEnter(t.next.container).then(() => {
+                resolve()
+              })
+            });
           },
         },
         {
@@ -52,7 +62,11 @@ class Main {
             namespace: ["home"],
           },
           leave: (t) => {
-            console.log(t);
+            return new Promise((resolve)=>{
+              aboutLeave(t.current.container).then(()=>{
+                resolve()
+              })
+            })
           },
           enter: (t) => {
             this.homeAnim();
@@ -64,14 +78,15 @@ class Main {
   }
 
   homeAnim() {
-    return new Home({
+    this.home = new Home({
       button: document.querySelector(".home__button"),
     });
   }
 
-  aboutAnim(elem) {
+  aboutAnim(fr) {
     new About({
-      dom: elem || document.querySelector("#canvasContainer"),
+      dom: document.querySelector("#canvasContainer"),
+      forceReload: fr
     });
   }
 }
