@@ -17,7 +17,7 @@ class Main {
 
     console.log(window.location.pathname);
 
-    if (window.location.pathname === "/index.html") {
+    if (window.location.pathname === "/index.html" || window.location.pathname === "/") {
       this.homeAnim();
       microAnimHome();
     }
