@@ -116,7 +116,7 @@
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
-      color: #ef572d;
+      color: #5121b0;
       position: relative;
       height: 20%;
 
@@ -161,6 +161,9 @@
           font-size: 3.5rem;
         }
         @media (min-width: 1000px) {
+          font-size: 5rem;
+        }
+        @media (min-width: 1100px) {
           font-size: 6rem;
         }
         @media (min-width: 1550px) {
@@ -197,7 +200,7 @@
         position: absolute;
         width: 1%;
         height: 100%;
-        background-color: #ef572d;
+        background-color: #5121b0;
         top: 0%;
         left: -3%;
       }
@@ -227,21 +230,29 @@
     height: 5px;
     background-color: #ef572d;
   }
-
   &.navLine1 {
     top: 16.5%;
+    background-color: #5121b0;
   }
   &.navLine2 {
     top: 33%;
+    background-color: #278d25;
+
   }
   &.navLine3 {
     top: 49.5%;
+    background-color: #a920ae;
+
   }
   &.navLine4 {
     top: 66%;
+    background-color: #c12e20;
+
   }
   &.navLine5 {
     top: 82.5%;
+    background-color: #204dac;
+
   }
 }
 

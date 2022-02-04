@@ -33,12 +33,16 @@ export default class Work {
       workEnter(this.container);
       this.mobileInit();
     }
+
+    this.colors = ["#5121b0", "#278d25", "#a920ae", "#c12e20", "#204dac"];
+
     this.progress = 0.0;
     this.previousProgress = 0.0;
     this.previousProgressNavLine = null;
   }
 
   animateDown() {
+    console.log(this.progress);
     const t1 = gsap.timeline();
     return new Promise((resolve) => {
       t1.to(".number_inner > h1", {
@@ -130,7 +134,7 @@ export default class Work {
           this.animateLines(e.progress.toFixed(1));
         },
         snap: {
-          snapTo: [0.01, 0.2, 0.4, 0.6, 0.8],
+          snapTo: [0.00000009, 0.2, 0.4, 0.6, 0.8],
           duration: 0.5,
           onComplete: (e) => {
             this.animation();
@@ -157,6 +161,7 @@ export default class Work {
         this.navLines.forEach((line, i) => {
           if (i !== 1) {
             line.classList.remove("active");
+            
           }
         });
       }
@@ -166,6 +171,7 @@ export default class Work {
         this.navLines.forEach((line, i) => {
           if (i !== 2) {
             line.classList.remove("active");
+            
           }
         });
       }
@@ -182,6 +188,7 @@ export default class Work {
         this.navLines.forEach((line, i) => {
           if (i !== 4) {
             line.classList.remove("active");
+            
           }
         });
       }
@@ -206,6 +213,7 @@ export default class Work {
         this.navLines.forEach((line, i) => {
           if (i !== 1) {
             line.classList.remove("active");
+            
           }
         });
       }
@@ -215,6 +223,7 @@ export default class Work {
         this.navLines.forEach((line, i) => {
           if (i !== 2) {
             line.classList.remove("active");
+            
           }
         });
       }
@@ -223,6 +232,7 @@ export default class Work {
         this.navLines.forEach((line, i) => {
           if (i !== 3) {
             line.classList.remove("active");
+            
           }
         });
       }
@@ -231,6 +241,7 @@ export default class Work {
         this.navLines.forEach((line, i) => {
           if (i !== 4) {
             line.classList.remove("active");
+            
           }
         });
       }
@@ -242,26 +253,46 @@ export default class Work {
     if (this.progress !== this.previousProgress) {
       this.animateDown().then(() => {
         if (this.progress === "0.0") {
+          document.querySelector(".number_inner > h1").style.color =
+            this.colors[0];
+          document.querySelector(".line_border").style.backgroundColor =
+            this.colors[0];
           document.querySelector(".number_inner > h1").innerHTML = "01";
-          document.querySelector(".headline > h1").innerHTML = "QUIZZY";
+          document.querySelector(".headline > h1").innerHTML = "PROJECT 1";
         }
 
         if (this.progress === "0.2") {
+          document.querySelector(".number_inner > h1").style.color =
+            this.colors[1];
+            document.querySelector(".line_border").style.backgroundColor =
+            this.colors[1];
           document.querySelector(".number_inner > h1").innerHTML = "02";
-          document.querySelector(".headline > h1").innerHTML = "NETFLIX";
+          document.querySelector(".headline > h1").innerHTML = "PROJECT 2";
         }
 
         if (this.progress === "0.4") {
+          document.querySelector(".number_inner > h1").style.color =
+            this.colors[2];
+            document.querySelector(".line_border").style.backgroundColor =
+            this.colors[2];
           document.querySelector(".number_inner > h1").innerHTML = "03";
-          document.querySelector(".headline > h1").innerHTML = "LOREM";
+          document.querySelector(".headline > h1").innerHTML = "PROJECT 3";
         }
         if (this.progress === "0.6") {
+          document.querySelector(".number_inner > h1").style.color =
+            this.colors[3];
+            document.querySelector(".line_border").style.backgroundColor =
+            this.colors[3];
           document.querySelector(".number_inner > h1").innerHTML = "04";
-          document.querySelector(".headline > h1").innerHTML = "IPSUM";
+          document.querySelector(".headline > h1").innerHTML = "PROJECT 4";
         }
         if (+this.progress >= 0.75) {
+          document.querySelector(".number_inner > h1").style.color =
+            this.colors[4];
+            document.querySelector(".line_border").style.backgroundColor =
+            this.colors[4];
           document.querySelector(".number_inner > h1").innerHTML = "05";
-          document.querySelector(".headline > h1").innerHTML = "PROJECT";
+          document.querySelector(".headline > h1").innerHTML = "PROJECT 5";
         }
         this.animateUp();
         this.previousProgress = this.progress;
@@ -272,26 +303,46 @@ export default class Work {
     if (this.progress !== this.previousProgress) {
       this.animateDown().then(() => {
         if (+this.progress === 0) {
+          document.querySelector(".number_inner > h1").style.color =
+            this.colors[0];
+            document.querySelector(".line_border").style.backgroundColor =
+            this.colors[0];
           document.querySelector(".number_inner > h1").innerHTML = "01";
-          document.querySelector(".headline > h1").innerHTML = "QUIZZY";
+          document.querySelector(".headline > h1").innerHTML = "PROJECT 1";
         }
 
         if (+this.progress === 0.3) {
+          document.querySelector(".number_inner > h1").style.color =
+            this.colors[1];
+            document.querySelector(".line_border").style.backgroundColor =
+            this.colors[1];
           document.querySelector(".number_inner > h1").innerHTML = "02";
-          document.querySelector(".headline > h1").innerHTML = "NETFLIX";
+          document.querySelector(".headline > h1").innerHTML = "PROJECT 2";
         }
 
         if (+this.progress === 0.5) {
+          document.querySelector(".number_inner > h1").style.color =
+            this.colors[2];
+            document.querySelector(".line_border").style.backgroundColor =
+            this.colors[2];
           document.querySelector(".number_inner > h1").innerHTML = "03";
-          document.querySelector(".headline > h1").innerHTML = "LOREM";
+          document.querySelector(".headline > h1").innerHTML = "PROJECT 3";
         }
         if (+this.progress === 0.8) {
+          document.querySelector(".number_inner > h1").style.color =
+            this.colors[3];
+            document.querySelector(".line_border").style.backgroundColor =
+            this.colors[3];
           document.querySelector(".number_inner > h1").innerHTML = "04";
-          document.querySelector(".headline > h1").innerHTML = "IPSUM";
+          document.querySelector(".headline > h1").innerHTML = "PROJECT 4";
         }
         if (+this.progress >= 0.97) {
+          document.querySelector(".number_inner > h1").style.color =
+            this.colors[4];
+            document.querySelector(".line_border").style.backgroundColor =
+            this.colors[4];
           document.querySelector(".number_inner > h1").innerHTML = "05";
-          document.querySelector(".headline > h1").innerHTML = "PROJECT";
+          document.querySelector(".headline > h1").innerHTML = "PROJECT 5";
         }
         this.animateUp();
         this.previousProgress = this.progress;
