@@ -4,7 +4,7 @@ import gsap from "gsap";
 export default function microAnimHome() {
     const nameTitle = document.querySelector(".name");
     const socialLinks = document.querySelectorAll(".social__links");
-    const pageLinks = document.querySelectorAll(".page__links");
+   
 
     const secondHomeTitle = document.querySelector(
       ".second__home__title .secondary"
@@ -29,20 +29,7 @@ export default function microAnimHome() {
         });
       });
     });
-    pageLinks.forEach((link) => {
-      link.addEventListener("mouseenter", (e) => {
-        gsap.to(e.target.firstChild.lastChild, {
-          duration: 0.2,
-          scaleX: 1,
-        });
-      });
-      link.addEventListener("mouseleave", (e) => {
-        gsap.to(e.target.firstChild.lastChild, {
-          duration: 0.2,
-          scaleX: 0,
-        });
-      });
-    });
+    
 
     nameTitle.addEventListener("mouseenter", () => {
       gsap.to(nameTitle, {

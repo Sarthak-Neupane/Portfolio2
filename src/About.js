@@ -12,8 +12,6 @@ export default class About {
     this.scene = new THREE.Scene();
 
     this.fr = options.forceReload;
-    console.log(this.fr)
-
 
     this.container = options.dom;
     this.img = this.container.querySelector('img')
@@ -22,7 +20,7 @@ export default class About {
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     this.renderer.setSize(this.width, this.height);
-    this.renderer.setClearColor(0xeeeeee, 1);
+    this.renderer.setClearColor(0x151516, 1);
     this.renderer.physicallyCorrectLights = true;
     this.renderer.outputEncoding = THREE.sRGBEncoding;
 
@@ -54,15 +52,16 @@ export default class About {
     this.isPlaying = true;
 
     aboutEnter(document).then(()=>{
-      this.settings();
-      this.addObjects();
-      this.resize();
-      this.render();
-      this.setupResize();
-  
-      this.mouseEvents()
+      if(window.innerWidth > 1024){
+        this.settings();
+        this.addObjects();
+        this.resize();
+        this.render();
+        this.setupResize();
+    
+        this.mouseEvents()
+      }
     })
-
   }
 
   getValue(val){

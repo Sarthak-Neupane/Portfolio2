@@ -9,9 +9,15 @@
   </head>
   <body data-barba="wrapper">
     <main data-barba="container" data-barba-namespace="about">
-      <div class="back-button">
-        <a class="back__link" href="./index.html">BACK</a>
-        <span class="line"></span>
+      <div class="nav">
+        <ul class="ul-about">
+          <li class="page__links">
+            <a href="./index.html">HOME <span class="line"></span></a>
+          </li>
+          <li class="page__links">
+            <a href="./work.html">WORK <span class="line"></span></a>
+          </li>
+        </ul>
       </div>
       <div
         id="canvasContainer"
@@ -20,22 +26,61 @@
         data-strength="0.15"
         data-relaxation="0.96"
       >
-        <img src="../static/img-about/15.jpg" alt="" />
+        <img class="one" src="../static/img-about/15.jpg" alt="" />
+        <!-- <img class="two" src="../static/img-about/2.jpg" alt="" /> -->
       </div>
       <div class="content-about">
-        <div class="text-content"><h1><span class="secondary">AMBITIOUS</span>, AND</h1></div>
-        <div class="text-content"><h1><span class="secondary">PASSIONATE</span> ABOUT MY</h1></div>
-        <div class="text-content"><h1>WORK.</h1></div>
-        <div class="text-content"><h1>I MOVE ON WITH A</h1></div>
-        <div class="text-content"><h1><span class="secondary">STRAIGHTFORWARD</span> AND</h1></div>
-        <div class="text-content"><h1>OPEN MIND TO BUILD</h1></div>
-        <div class="text-content"><h1>WHAT ONLY A <span class="secondary">CREATiVE</span></h1></div>
-        <div class="text-content"><h1>MIND CAN <span class="secondary">IMAGINE</span>!</h1></div>
+        <div class="sidebar">
+          <p><span class="primary">AMBITIOUS</span> AND <span class="primary">PASSIONATE</span> ABOUT MY WORK</p>
+        </div>
+        <div class="main-content">
+          <div class="about_headline"><h1>NAMASTE!</h1></div>
+          <div class="image">
+            <img src="../static/img-about/15.jpg" alt="" />
+          </div>
+          <div class="text-about">
+            <div class="description">
+              <div class="para">
+                <p>
+                  I AM SARTHAK NEUPANE, A
+                  <span class="secondary">FRONTEND</span> DEVELOPER BASED IN
+                  NEPAL. WITH OVER 2 YEARS OF EXPERIENCE, I CAN HELP YOU GET
+                  YOUR FOOT ON THIS EVER GROWING
+                  <span class="secondary">DIGITAL WORLD</span>.
+                </p>
+              </div>
+              <div class="para">
+                <p>
+                  I MOVE ON WITH A
+                  <span class="secondary">STRAIGHTFORWARD</span> MIND TO BUILD
+                  WHAT ONLY A <span class="secondary">CREATIVE</span> MIND CAN
+                  <span class="secondary">IMAGINE</span>.
+                </p>
+              </div>
+              <div class="para">
+                <p>WHY <span class="secondary">WAIT</span> THEN?</p>
+              </div>
+              <div class="para">
+                <p>
+                  HIT ME A MAIL AT <span class="secondary">abc@123.com</span>
+                </p>
+              </div>
+            </div>
+            <div class="socials">
+              <li class="social__links">
+                <a href="#">INSTAGRAM</a> <span class="line"></span>
+              </li>
+              <li class="social__links"><a href="#">GITHUB</a> <span class="line"></span></li>
+              <li class="social__links"><a href="#">TWITTER</a> <span class="line"></span></li>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="curtain full"></div>
     </main>
 
-    <script type="module" src="../src/main.js"></script>/
+    <script type="module" src="../src/main.js"></script>
+    /
   </body>
 </html>

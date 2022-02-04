@@ -11,6 +11,7 @@
 $p-background-color: #e8e8e8;
 $p-color: #dddddd;
 $s-color: #ef572d;
+$p-dark-color: #151516;
 $s-font-family: "party_confettiregular", sans-serif;
 $p-font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 
@@ -26,6 +27,10 @@ $p-font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+body{
+  overflow-x: hidden;
 }
 
 .curtain {
@@ -50,6 +55,9 @@ $p-font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   object-fit: cover;
   height: 100%;
   width: 100%;
+  @media (max-width: 1024px){
+    visibility: visible;
+  }
 }
 
 #container,
@@ -72,6 +80,7 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
   opacity: 0;
 
   ul {
@@ -81,6 +90,12 @@ canvas {
     list-style: none;
     height: 100%;
     width: 100%;
+    z-index: 999;
+
+    &.ul-work, 
+    &.ul-about{
+      width: 80%;
+    }
 
     a {
       position: relative;
@@ -140,9 +155,13 @@ canvas {
 .secondary {
   color: $s-color;
 }
+.primary {
+  color: $p-color;
+}
 
 .line {
   position: absolute;
+  display: inline-block;
   top: 45%;
   left: -5%;
   transform: translateY(-50%);

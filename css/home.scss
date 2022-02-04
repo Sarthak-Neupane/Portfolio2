@@ -1,4 +1,6 @@
 @use "base";
+@use "work";
+@use "about";
 
 .content {
   max-height: 100vh;
@@ -82,24 +84,3 @@
   }
 }
 
-.content-about{
-  overflow: hidden;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 5%;
-  height: 100vh;
-  max-width: 50vw;
-  user-select: none;
-
-  .text-content{
-    overflow: hidden;
-  }
-
-  h1{
-    font-weight: 400;
-    font-size: 4.5rem;
-    font-family: base.$p-font-family;
-    transform: translateY(100%);
-  }
-}

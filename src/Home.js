@@ -8,7 +8,6 @@ export default class HOME {
     this.enterCtrl = options.button;
     this.fr = options.forceReload;
 
-    console.log(this.fr)
 
     this.isOpen = false;
 
