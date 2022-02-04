@@ -1,4 +1,4 @@
-import imagesLoaded from "imagesloaded";
+import ASScroll from "@ashthornton/asscroll";
 import Sketch from "../lib/js/work_webgl";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -11,25 +11,28 @@ import workEnter from "../Animations/workEnter";
 export default class Work {
   constructor(options) {
     console.log(options);
+
     this.container = options.document || document;
     this.sections = [...this.container.querySelectorAll(".img_inner")];
-
-    this.sketch = new Sketch({
-      dom: options.dom,
-    });
-
-    this.sketch.onload = () => {
-      setTimeout(() => {
-        workEnter(this.container);
-      }, 50);
-    };
-
-    
     this.navLines = [...this.container.querySelectorAll(".navLine")];
-    
-    console.log(this.navLines);
-    
-    this.init();
+
+    this.width = this.container.body.clientWidth;
+
+    if (this.width > 1000) {
+      this.sketch = new Sketch({
+        dom: options.dom,
+      });
+
+      this.sketch.onload = () => {
+        setTimeout(() => {
+          workEnter(this.container);
+        }, 50);
+      };
+      this.init();
+    } else {
+      workEnter(this.container);
+      this.mobileInit();
+    }
     this.progress = 0.0;
     this.previousProgress = 0.0;
     this.previousProgressNavLine = null;
@@ -72,24 +75,64 @@ export default class Work {
     );
   }
 
+  mobileInit() {
+    const sections = gsap.utils.toArray(".img_inner");
+
+    const contentWork = document.querySelector(".content-work").clientWidth;
+    const contentWorkInner =
+      document.querySelector(".content_inner").clientWidth;
+
+    // console.log(contentWork - contentWorkInner);
+    console.log(
+      `+=${
+        5 * this.container.querySelector(".img_inner").offsetWidth +
+        (contentWork - contentWorkInner) * 0.5
+      }`
+    );
+    // console.log(sections);
+
+    gsap.to(sections, {
+      xPercent: -100 * (sections.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: "main",
+        pin: true,
+        onUpdate: (e) => {
+          console.log(e.progress);
+          this.progress = e.progress.toFixed(1);
+          this.animateLinesMobile(e.progress.toFixed(1));
+        },
+        scrub: 1,
+        markers: true,
+        snap: {
+          snapTo: [0, 0.25, 0.5, 0.75, 0.98],
+          duration: 0.5,
+          onComplete: (e) => {
+            this.animationMobile();
+          },
+        },
+        // base vertical scrolling on how wide the container is so it feels more natural.
+        end: `+=${
+          100 * this.container.querySelector(".img_inner").offsetWidth
+          // (contentWork - contentWorkInner) * 2
+        }`,
+      },
+    });
+  }
+
   init() {
     gsap.to(this.sections, {
       scrollTrigger: {
         trigger: ".content_inner",
         pin: ".text_content",
-        // pinSpacing: false,
-        // start: "top top",
         onUpdate: (e) => {
-          console.log(e.progress);
           this.progress = e.progress.toFixed(1);
-          // console.log(this.progress);
           this.animateLines(e.progress.toFixed(1));
         },
         snap: {
           snapTo: [0.01, 0.2, 0.4, 0.6, 0.8],
           duration: 0.5,
           onComplete: (e) => {
-            // console.log(e);
             this.animation();
           },
         },
@@ -98,10 +141,8 @@ export default class Work {
   }
 
   animateLines(progress) {
-    // console.log(progress)
     if (progress !== this.previousProgressNavLine) {
       const progNum = +progress;
-      console.log(progNum);
       if (progNum >= 0 && progNum < 0.2) {
         this.navLines[0].classList.add("active");
         this.navLines.forEach((line, i) => {
@@ -136,7 +177,56 @@ export default class Work {
           }
         });
       }
-      if (progNum === 0.8) {
+      if (progNum >= 0.75) {
+        this.navLines[4].classList.add("active");
+        this.navLines.forEach((line, i) => {
+          if (i !== 4) {
+            line.classList.remove("active");
+          }
+        });
+      }
+      this.previousProgressNavLine = progress;
+    }
+  }
+
+  animateLinesMobile(progress) {
+    if (progress !== this.previousProgressNavLine) {
+      const progNum = +progress;
+      if (progNum >= 0 && progNum < 0.15) {
+        this.navLines[0].classList.add("active");
+        this.navLines.forEach((line, i) => {
+          if (i !== 0) {
+            line.classList.remove("active");
+          }
+        });
+      }
+
+      if (progNum >= 0.3 && progNum < 0.4) {
+        this.navLines[1].classList.add("active");
+        this.navLines.forEach((line, i) => {
+          if (i !== 1) {
+            line.classList.remove("active");
+          }
+        });
+      }
+
+      if (progNum >= 0.5 && progNum < 0.65) {
+        this.navLines[2].classList.add("active");
+        this.navLines.forEach((line, i) => {
+          if (i !== 2) {
+            line.classList.remove("active");
+          }
+        });
+      }
+      if (progNum >= 0.8 && progNum < 0.9) {
+        this.navLines[3].classList.add("active");
+        this.navLines.forEach((line, i) => {
+          if (i !== 3) {
+            line.classList.remove("active");
+          }
+        });
+      }
+      if (progNum > 0.9) {
         this.navLines[4].classList.add("active");
         this.navLines.forEach((line, i) => {
           if (i !== 4) {
@@ -169,7 +259,7 @@ export default class Work {
           document.querySelector(".number_inner > h1").innerHTML = "04";
           document.querySelector(".headline > h1").innerHTML = "IPSUM";
         }
-        if (this.progress === "0.8") {
+        if (+this.progress >= 0.75) {
           document.querySelector(".number_inner > h1").innerHTML = "05";
           document.querySelector(".headline > h1").innerHTML = "PROJECT";
         }
@@ -177,6 +267,35 @@ export default class Work {
         this.previousProgress = this.progress;
       });
     }
-    // console.log(this.progress, this.previousProgress);
+  }
+  animationMobile() {
+    if (this.progress !== this.previousProgress) {
+      this.animateDown().then(() => {
+        if (+this.progress === 0) {
+          document.querySelector(".number_inner > h1").innerHTML = "01";
+          document.querySelector(".headline > h1").innerHTML = "QUIZZY";
+        }
+
+        if (+this.progress === 0.3) {
+          document.querySelector(".number_inner > h1").innerHTML = "02";
+          document.querySelector(".headline > h1").innerHTML = "NETFLIX";
+        }
+
+        if (+this.progress === 0.5) {
+          document.querySelector(".number_inner > h1").innerHTML = "03";
+          document.querySelector(".headline > h1").innerHTML = "LOREM";
+        }
+        if (+this.progress === 0.8) {
+          document.querySelector(".number_inner > h1").innerHTML = "04";
+          document.querySelector(".headline > h1").innerHTML = "IPSUM";
+        }
+        if (+this.progress >= 0.97) {
+          document.querySelector(".number_inner > h1").innerHTML = "05";
+          document.querySelector(".headline > h1").innerHTML = "PROJECT";
+        }
+        this.animateUp();
+        this.previousProgress = this.progress;
+      });
+    }
   }
 }
