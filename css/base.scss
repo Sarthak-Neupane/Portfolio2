@@ -55,9 +55,6 @@ body{
   object-fit: cover;
   height: 100%;
   width: 100%;
-  @media (max-width: 1024px){
-    visibility: visible;
-  }
 }
 
 #container,
@@ -73,6 +70,9 @@ body{
 
 canvas {
   display: block;
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .nav {
@@ -102,6 +102,34 @@ canvas {
       text-decoration: none;
       color: $p-color;
       font-family: $p-font-family;
+
+      
+      @media(min-width: 1550px){
+        font-size: 1.5vw;
+      }
+  
+      @media(max-width: 1550px){
+        font-size: 1.5rem;
+      }
+  
+      @media(max-width: 1400px){
+        font-size: 1.4rem;
+      }
+  
+      @media(max-width: 1300px){
+        font-size: 1.3rem;
+      }
+  
+      @media(max-width: 1168px){
+        font-size: 1.2rem;
+      }
+      @media(max-width: 968px){
+        font-size: 1rem;
+      }
+  
+      @media(max-width: 767px){
+        font-size: .9rem;
+      }
     }
   }
 }
@@ -122,6 +150,12 @@ canvas {
     flex-direction: column;
     transform: translateY(100%);
 
+    @media(max-width: 768px){
+      .only_big_screen{
+        display: none;
+      }
+    }
+
     h3 {
       font-weight: 300;
       height: 5vh;
@@ -130,6 +164,34 @@ canvas {
       align-items: center;
       width: 100%;
       cursor: pointer;
+      
+     
+      @media(min-width: 1550px){
+        font-size: 1.5vw;
+      }
+  
+      @media(max-width: 1550px){
+        font-size: 1.5rem;
+      }
+  
+      @media(max-width: 1400px){
+        font-size: 1.4rem;
+      }
+  
+      @media(max-width: 1300px){
+        font-size: 1.3rem;
+      }
+  
+      @media(max-width: 1168px){
+        font-size: 1.2rem;
+      }
+      @media(max-width: 968px){
+        font-size: 1rem;
+      }
+  
+      @media(max-width: 767px){
+        font-size: .9rem;
+      }
     }
   }
 
@@ -138,6 +200,11 @@ canvas {
     list-style: none;
     gap: 2rem;
     height: 100%;
+
+    @media(max-width: 768px){
+      gap: .7rem;
+    }
+
 
     li {
       cursor: pointer;
@@ -148,6 +215,33 @@ canvas {
       transform: translateY(100%);
       position: relative;
       padding: 0 0.2rem;
+      
+      @media(min-width: 1550px){
+        font-size: 1.5vw;
+      }
+  
+      @media(max-width: 1550px){
+        font-size: 1.5rem;
+      }
+  
+      @media(max-width: 1400px){
+        font-size: 1.4rem;
+      }
+  
+      @media(max-width: 1300px){
+        font-size: 1.3rem;
+      }
+  
+      @media(max-width: 1168px){
+        font-size: 1.2rem;
+      }
+      @media(max-width: 968px){
+        font-size: 1rem;
+      }
+  
+      @media(max-width: 767px){
+        font-size: .9rem;
+      }
     }
   }
 }
@@ -185,3 +279,5 @@ canvas {
     font-size: 1.6rem;
   }
 }
+
+

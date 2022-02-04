@@ -9,56 +9,58 @@ function clamp(number, min, max) {
 
 export default class About {
   constructor(options) {
-    this.scene = new THREE.Scene();
 
-    this.fr = options.forceReload;
-
-    this.container = options.dom;
-    this.img = this.container.querySelector('img')
-    this.width = this.container.offsetWidth;
-    this.height = this.container.offsetHeight;
-    this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    this.renderer.setSize(this.width, this.height);
-    this.renderer.setClearColor(0x151516, 1);
-    this.renderer.physicallyCorrectLights = true;
-    this.renderer.outputEncoding = THREE.sRGBEncoding;
-
-    this.container.appendChild(this.renderer.domElement);
-
-    this.camera = new THREE.PerspectiveCamera(
-      70,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      100
-    );
-
-    var frustumSize = 1;
-    var aspect = window.innerWidth / window.innerHeight;
-    this.camera = new THREE.OrthographicCamera(frustumSize / -2, frustumSize / 2, frustumSize / 2, frustumSize / -2, -1000, 1000);
-    this.camera.position.set(0, 0, 2);
-
-    this.time = 0;
-
-    this.mouse = {
-      x: 0,
-      y: 0,
-      prevX: 0,
-      prevY: 0,
-      vX: 0,
-      vY: 0
+    if(window.innerWidth > 768){
+          this.scene = new THREE.Scene();
+      
+          this.fr = options.forceReload;
+      
+          this.container = options.dom;
+          this.img = this.container.querySelector('img')
+          this.width = this.container.offsetWidth;
+          this.height = this.container.offsetHeight;
+          this.renderer = new THREE.WebGLRenderer();
+          this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+          this.renderer.setSize(this.width, this.height);
+          this.renderer.setClearColor(0x151516, 1);
+          this.renderer.physicallyCorrectLights = true;
+          this.renderer.outputEncoding = THREE.sRGBEncoding;
+      
+          this.container.appendChild(this.renderer.domElement);
+      
+          this.camera = new THREE.PerspectiveCamera(
+            70,
+            window.innerWidth / window.innerHeight,
+            0.1,
+            100
+          );
+      
+          var frustumSize = 1;
+          var aspect = window.innerWidth / window.innerHeight;
+          this.camera = new THREE.OrthographicCamera(frustumSize / -2, frustumSize / 2, frustumSize / 2, frustumSize / -2, -1000, 1000);
+          this.camera.position.set(0, 0, 2);
+      
+          this.time = 0;
+      
+          this.mouse = {
+            x: 0,
+            y: 0,
+            prevX: 0,
+            prevY: 0,
+            vX: 0,
+            vY: 0
+          }
+      
+          this.isPlaying = true;
     }
 
-    this.isPlaying = true;
-
     aboutEnter(document).then(()=>{
-      if(window.innerWidth > 1024){
+      if(window.innerWidth > 768){
         this.settings();
         this.addObjects();
         this.resize();
         this.render();
         this.setupResize();
-    
         this.mouseEvents()
       }
     })

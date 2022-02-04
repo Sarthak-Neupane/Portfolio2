@@ -14,8 +14,14 @@ import workLeave from "../Animations/workLeave";
 
 class Main {
   constructor() {
+    this.width = window.innerWidth;
+
+    if (this.width > 1024) {
+      this.pageLinkAnim(document);
+    }
+
     this.init();
-    this.pageLinkAnim(document);
+
     // this.homeAnim();
     // microAnimHome();
 
@@ -49,14 +55,14 @@ class Main {
     pageLinks.forEach((link) => {
       link.addEventListener("mouseenter", (e) => {
         console.dir(e.target.firstElementChild.firstElementChild);
-        console.log('in');
+        console.log("in");
         gsap.to(e.target.firstElementChild.firstElementChild, {
           duration: 0.2,
           scaleX: 1,
         });
       });
       link.addEventListener("mouseleave", (e) => {
-        console.log('out');
+        console.log("out");
         gsap.to(e.target.firstElementChild.firstElementChild, {
           duration: 0.2,
           scaleX: 0,
@@ -83,7 +89,10 @@ class Main {
             });
           },
           enter: (t) => {
-            this.pageLinkAnim(t.next.container);
+            if (this.width > 1024) {
+              this.pageLinkAnim(t.next.container);
+            }
+
             this.aboutAnim(false);
             return new Promise((resolve) => {
               aboutEnter(t.next.container).then(() => {
@@ -107,7 +116,9 @@ class Main {
             });
           },
           enter: (t) => {
-            this.pageLinkAnim(t.next.container);
+            if (this.width > 1024) {
+              this.pageLinkAnim(t.next.container);
+            }
             this.homeAnim(false);
             microAnimHome();
           },
@@ -128,7 +139,9 @@ class Main {
             });
           },
           enter: (t) => {
-            this.pageLinkAnim(t.next.container);
+            if (this.width > 1024) {
+              this.pageLinkAnim(t.next.container);
+            }
             this.workAnim(false);
           },
         },
@@ -148,7 +161,9 @@ class Main {
             });
           },
           enter: (t) => {
-            this.pageLinkAnim(t.next.container);
+            if (this.width > 1024) {
+              this.pageLinkAnim(t.next.container);
+            }
             this.homeAnim(false);
             microAnimHome();
           },
@@ -170,8 +185,10 @@ class Main {
             });
           },
           enter: (t) => {
-            this.pageLinkAnim(t.next.container);
-            t.current.container.remove()
+            if (this.width > 1024) {
+              this.pageLinkAnim(t.next.container);
+            }
+            t.current.container.remove();
             this.aboutAnim(false);
             return new Promise((resolve) => {
               aboutEnter(t.next.container).then(() => {
@@ -195,8 +212,10 @@ class Main {
             });
           },
           enter: (t) => {
-            t.current.container.remove()
-            this.pageLinkAnim(t.next.container);
+            t.current.container.remove();
+            if (this.width > 1024) {
+              this.pageLinkAnim(t.next.container);
+            }
             this.workAnim(false);
           },
         },
