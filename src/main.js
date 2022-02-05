@@ -155,7 +155,7 @@ class Main {
           leave: (t) => {
             console.log(t.current);
             return new Promise((resolve) => {
-              workLeave(t.current.container).then(() => {
+              workLeave(t.current.container, this.work).then(() => {
                 resolve();
               });
             });
@@ -179,7 +179,7 @@ class Main {
           leave: (t) => {
             console.log(t.current);
             return new Promise((resolve) => {
-              workLeave(t.current.container).then(() => {
+              workLeave(t.current.container, this.work).then(() => {
                 resolve();
               });
             });
@@ -238,7 +238,7 @@ class Main {
   }
 
   workAnim(fr) {
-    new Work({
+    this.work = new Work({
       dom: document.querySelector("#container-work"),
       forceReload: fr,
       document: document,
