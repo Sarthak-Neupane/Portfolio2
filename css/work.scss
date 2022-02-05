@@ -91,7 +91,6 @@
   align-items: flex-start;
   flex-direction: column;
   color: #ddd;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   width: 50%;
   height: 100vh;
   padding: 0 2rem;
@@ -137,6 +136,7 @@
 
         h1 {
           font-size: 4rem;
+          font-family: base.$p-font-family;
           transform: translateY(100%);
 
           @media (max-width: 1000px) {
@@ -156,6 +156,7 @@
     }
     .headline {
       // font-size: 3rem;
+      font-family: base.$p-font-family;
       color: #e8e8e8;
       overflow: hidden;
 
@@ -187,6 +188,7 @@
       justify-content: center;
       align-items: center;
       width: 80%;
+      font-family: base.$s-font-family;
 
       @media (max-width: 640px) {
         font-size: 0.8rem;

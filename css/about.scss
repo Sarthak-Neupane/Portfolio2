@@ -26,6 +26,7 @@
   font-family: base.$p-font-family;
 
   @media (max-width: 768px) {
+    font-family: base.$s-font-family;
     height: 100vh;
     width: 100vw;
     max-height: 100vh;

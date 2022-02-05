@@ -48,14 +48,6 @@ export default class Work {
     this.previousProgressNavLine = null;
   }
 
-  static killTimeline(){
-    // console.log(this.t1)
-    // this.t4.kill(true);
-    // this.t3.kill(true);
-    // this.t2.kill(true);
-    // this.t1.kill(true);
-  }
-
   animateDown() {
     console.log(this.progress);
     return new Promise((resolve) => {

@@ -8,12 +8,24 @@
       format("woff");
 }
 
+@font-face {
+  font-family: "Visage";
+  src: url("../fonts/Visage/Visage Bold.woff2")
+      format("woff2"),
+}
+
+@font-face {
+  font-family: "Visage R";
+  src: url("../fonts/Visage/Visage Regular.woff2")
+      format("woff2"),
+}
+
 $p-background-color: #e8e8e8;
 $p-color: #dddddd;
 $s-color: #ef572d;
 $p-dark-color: #151516;
-$s-font-family: "party_confettiregular", sans-serif;
-$p-font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+$s-font-family: "Visage R", sans-serif;
+$p-font-family: Impact, 'Visage', "Arial Narrow Bold", sans-serif;
 
 @mixin pos($top: 0%) {
   position: fixed;
@@ -35,6 +47,9 @@ body{
   
   @media(max-width: 1000px){
     overflow: hidden;
+  }
+  @media(min-width: 1000px){
+    overflow: scroll;
   }
 }
 
