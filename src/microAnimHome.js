@@ -9,10 +9,7 @@ export default function microAnimHome() {
     const secondHomeTitle = document.querySelector(
       ".second__home__title .secondary"
     );
-    // console.log(secondHomeTitle);
-
     secondHomeTitle.addEventListener("mouseenter", (e) => {
-      console.log(e);
     });
 
     socialLinks.forEach((link) => {

@@ -1,4 +1,3 @@
-import ASScroll from "@ashthornton/asscroll";
 import Sketch from "../lib/js/work_webgl";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -6,14 +5,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 import workEnter from "../Animations/workEnter";
 
-// import Headline from "../lib/js/workTitleAnim";
 
 export default class Work {
   constructor(options) {
-    console.log(options);
 
     this.container = document;
-    console.log(this.container);
     this.sections = [...this.container.querySelectorAll(".img_inner")];
     this.navLines = [...this.container.querySelectorAll(".navLine")];
 
@@ -49,7 +45,6 @@ export default class Work {
   }
 
   animateDown() {
-    console.log(this.progress);
     return new Promise((resolve) => {
       this.t1.to(".number_inner > h1", {
         transform: "translateY(100%)",
@@ -91,14 +86,6 @@ export default class Work {
     const contentWorkInner =
       document.querySelector(".content_inner").clientWidth;
 
-    // console.log(contentWork - contentWorkInner);
-    console.log(
-      `+=${
-        10 * this.container.querySelector(".img_inner").offsetWidth +
-        (contentWork - contentWorkInner) * 0.5
-      }`
-    );
-    // console.log(sections);
 
 
     this.t3.to(sections, {
@@ -108,7 +95,6 @@ export default class Work {
         trigger: ".work",
         pin: ".work",
         onUpdate: (e) => {
-          console.log(e.progress);
           this.progress = e.progress.toFixed(1);
           this.animateLinesMobile(e.progress.toFixed(1));
         },

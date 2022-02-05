@@ -76,7 +76,6 @@ export default class About {
       this.mouse.x = e.clientX / this.width;
       this.mouse.y = e.clientY / this.height;
 
-      // console.log(this.mouse.x,this.mouse.y)
 
       this.mouse.vX = this.mouse.x - this.mouse.prevX;
       this.mouse.vY = this.mouse.y - this.mouse.prevY;
@@ -85,8 +84,6 @@ export default class About {
       this.mouse.prevX = this.mouse.x
       this.mouse.prevY = this.mouse.y;
 
-
-      // console.log(this.mouse.vX,'vx')
     })
   }
 
@@ -99,15 +96,6 @@ export default class About {
       relaxation: this.getValue('relaxation')||0.9,
     };
 
-
-    // this.gui = new GUI();
-
-    // this.gui.add(this.settings, "grid", 2, 1000, 1).onFinishChange(() => {
-    //   this.regenerateGrid()
-    // });
-    // this.gui.add(this.settings, "mouse", 0, 1, 0.01);
-    // this.gui.add(this.settings, "strength", 0, 1, 0.01);
-    // this.gui.add(this.settings, "relaxation", 0, 1, 0.01);
   }
 
   setupResize() {
@@ -186,7 +174,6 @@ export default class About {
 
     this.regenerateGrid()
     let texture = new THREE.TextureLoader().load(this.img.src);
-    // texture.needsUpdate = true;
     this.material = new THREE.ShaderMaterial({
       extensions: {
         derivatives: "#extension GL_OES_standard_derivatives : enable"

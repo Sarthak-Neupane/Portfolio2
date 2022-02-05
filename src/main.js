@@ -22,27 +22,23 @@ class Main {
 
     this.init();
 
-    // this.homeAnim();
-    // microAnimHome();
-
-    // console.log(window.location.pathname);
 
     if (
       window.location.pathname == "/index.html" ||
       window.location.pathname === "/"
     ) {
-      // console.log("home")
+
       this.homeAnim(true);
       microAnimHome();
     }
 
     if (window.location.pathname == "/about.html") {
-      // console.log("about")
+
       this.aboutAnim(true);
     }
 
     if (window.location.pathname == "/work.html") {
-      // console.log("work")
+
       this.workAnim(true);
     }
   }
@@ -50,19 +46,16 @@ class Main {
   pageLinkAnim(d) {
     const pageLinks = [...d.querySelectorAll(".page__links")];
 
-    console.log(pageLinks);
 
     pageLinks.forEach((link) => {
       link.addEventListener("mouseenter", (e) => {
         console.dir(e.target.firstElementChild.firstElementChild);
-        console.log("in");
         gsap.to(e.target.firstElementChild.firstElementChild, {
           duration: 0.2,
           scaleX: 1,
         });
       });
       link.addEventListener("mouseleave", (e) => {
-        console.log("out");
         gsap.to(e.target.firstElementChild.firstElementChild, {
           duration: 0.2,
           scaleX: 0,
@@ -131,7 +124,6 @@ class Main {
             namespace: ["work"],
           },
           leave: (t) => {
-            console.log(t.current);
             return new Promise((resolve) => {
               homeLeave(this.home, t.current.container).then(() => {
                 resolve();
@@ -153,7 +145,6 @@ class Main {
             namespace: ["home"],
           },
           leave: (t) => {
-            console.log(t.current);
             return new Promise((resolve) => {
               workLeave(t.current.container, this.work).then(() => {
                 resolve();
@@ -177,7 +168,6 @@ class Main {
             namespace: ["about"],
           },
           leave: (t) => {
-            console.log(t.current);
             return new Promise((resolve) => {
               workLeave(t.current.container, this.work).then(() => {
                 resolve();

@@ -57,16 +57,6 @@
       font-size: 2rem;
       transform: rotate(270deg);
       transform-origin: center;
-
-      // @media (max-width: 768px) {
-      //   bottom: 0%;
-      //   left: 0%;
-      //   width: 100vw;
-      //   transform: translate(-50%, -50%);
-      //   font-size: 1rem;
-      //   transform: rotate(0deg);
-      //   transform-origin: center;
-      // }
     }
   }
 
@@ -184,19 +174,15 @@
 
           @media (min-width: 1500px) {
             font-size: 2.4vw;
-            // padding-top: 3.3vw;
           }
 
           @media (max-width: 1500px) {
-            // padding-top: 3rem;
             font-size: 1.9rem;
           }
           @media (max-width: 1268px) {
-            // padding-top: 2rem;
             font-size: 1.6rem;
           }
           @media (max-width: 1024px) {
-            // padding-top: 2rem;
             font-size: 1.3rem;
           }
           @media (max-width: 768px) {

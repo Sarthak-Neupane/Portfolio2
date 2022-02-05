@@ -2,16 +2,12 @@ import gsap from "gsap";
 
 export default function workEnter(d) {
   return new Promise((resolve) => {
-    console.log(d)
     const t1 = gsap.timeline();
-    console.log(d.querySelector(".curtain"))
     d.querySelector(".full").style.backgroundColor = "rgba(0,0,0,1)";
     document.body.style.maxHeight = "700vh";
     document.body.style.overflow = "scroll";
     t1.to(d.querySelector(".full"), {
       scaleY: 0,
-      // visibility: "hidden",
-      // pointerEvents: "none",
       onComplete: ()=>{
           resolve();
       }
