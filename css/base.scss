@@ -29,11 +29,12 @@ $p-font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   box-sizing: border-box;
 }
 
+
 body{
   overflow-x: hidden;
   
-  @media(max-width: 640px){
-    overflow-y: hidden;
+  @media(max-width: 1000px){
+    overflow: hidden;
   }
 }
 
@@ -245,6 +246,9 @@ canvas {
   
       @media(max-width: 767px){
         font-size: .9rem;
+      }
+      @media(max-width: 450px){
+        font-size: .7rem;
       }
     }
   }

@@ -102,7 +102,7 @@ export default class Work {
     // console.log(contentWork - contentWorkInner);
     console.log(
       `+=${
-        5 * this.container.querySelector(".img_inner").offsetWidth +
+        10 * this.container.querySelector(".img_inner").offsetWidth +
         (contentWork - contentWorkInner) * 0.5
       }`
     );

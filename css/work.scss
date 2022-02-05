@@ -21,6 +21,7 @@
   @media (max-width: 1000px) {
     overflow: hidden;
     max-height: 100vh;
+    height: 100vh;
   }
 }
 
@@ -94,10 +95,13 @@
   width: 50%;
   height: 100vh;
   padding: 0 2rem;
-
+  
   @media (max-width: 1000px) {
-    height: 50%;
+    justify-content: flex-start;
+    height: 100%;
     width: 100vw;
+    padding: 0;
+    // background: blue;
   }
 
   .text_content_inner {
@@ -108,7 +112,9 @@
     height: 50%;
 
     @media (max-width: 1000px) {
-      height: 100%;
+      height: 80%;
+      width: 100vw;
+      // background: red;
     }
 
     .number {
@@ -158,7 +164,7 @@
         transform: translateY(100%);
 
         @media (max-width: 1000px) {
-          font-size: 3.5rem;
+          font-size: 3rem;
         }
         @media (min-width: 1000px) {
           font-size: 5rem;
