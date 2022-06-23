@@ -5,20 +5,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 import workEnter from "../Animations/workEnter";
 
-
 export default class Work {
   constructor(options) {
-
     this.container = document;
     this.sections = [...this.container.querySelectorAll(".img_inner")];
     this.navLines = [...this.container.querySelectorAll(".navLine")];
 
     this.width = this.container.body.clientWidth;
 
-    this.t1 = gsap.timeline()
-    this.t2 = gsap.timeline()
-    this.t3 = gsap.timeline()
-    this.t4 = gsap.timeline()
+    this.t1 = gsap.timeline();
+    this.t2 = gsap.timeline();
+    this.t3 = gsap.timeline();
+    this.t4 = gsap.timeline();
 
     if (this.width > 1000) {
       this.sketch = new Sketch({
@@ -46,21 +44,22 @@ export default class Work {
 
   animateDown() {
     return new Promise((resolve) => {
-      this.t1.to(".number_inner > h1", {
-        transform: "translateY(100%)",
-        duration: 0.2,
-      });
-      this.t1.to(
-        ".headline > h1",
-        {
-          transform: "translateY(100%)",
-          duration: 0.2,
-          onComplete: () => {
-            resolve();
-          },
-        },
-        "-=0.2"
-      );
+      // this.t1.to(".number_inner > h1", {
+      //   transform: "translateY(100%)",
+      //   duration: 0.2,
+      // });
+      // this.t1.to(
+      //   ".headline > h1",
+      //   {
+      //     transform: "translateY(100%)",
+      //     duration: 0.2,
+      //     onComplete: () => {
+      //       resolve();
+      //     },
+      //   },
+      //   "-=0.2"
+      // );
+      resolve();
     });
   }
 
@@ -81,12 +80,11 @@ export default class Work {
 
   mobileInit() {
     const sections = gsap.utils.toArray(".img_inner");
+    console.log(sections)
 
     const contentWork = document.querySelector(".content-work").clientWidth;
     const contentWorkInner =
       document.querySelector(".content_inner").clientWidth;
-
-
 
     this.t3.to(sections, {
       xPercent: -100 * (sections.length - 1),
@@ -96,21 +94,19 @@ export default class Work {
         pin: ".work",
         onUpdate: (e) => {
           this.progress = e.progress.toFixed(1);
+          // console.log(e)
           this.animateLinesMobile(e.progress.toFixed(1));
+          this.animationMobile();
         },
         scrub: 1,
         snap: {
-          snapTo: [0, 0.25, 0.5, 0.75, 0.98],
+          snapTo: 1/2,
           duration: 0.5,
           onComplete: (e) => {
-            this.animationMobile();
+            console.log(e)
+            // this.animationMobile();
           },
         },
-        // base vertical scrolling on how wide the container is so it feels more natural.
-        end: `+=${
-          15 * this.container.querySelector(".img_inner").offsetWidth
-          // (contentWork - contentWorkInner) * 2
-        }`,
       },
     });
   }
@@ -123,13 +119,13 @@ export default class Work {
         onUpdate: (e) => {
           this.progress = e.progress.toFixed(1);
           this.animateLines(e.progress.toFixed(1));
+          this.animation(e.progress.toFixed(1));
         },
         snap: {
-          snapTo: [0.00000009, 0.2, 0.4, 0.6, 0.8],
+          // snapTo: [0.00000009, 0.2, 0.4, 0.6, 0.8],
+          // duration: 0.5,
+          snapTo: 1/3,
           duration: 0.5,
-          onComplete: (e) => {
-            this.animation();
-          },
         },
       },
     });
@@ -138,7 +134,7 @@ export default class Work {
   animateLines(progress) {
     if (progress !== this.previousProgressNavLine) {
       const progNum = +progress;
-      if (progNum >= 0 && progNum < 0.2) {
+      if (progNum >= 0 && progNum < 0.3) {
         this.navLines[0].classList.add("active");
         this.navLines.forEach((line, i) => {
           if (i !== 0) {
@@ -147,7 +143,7 @@ export default class Work {
         });
       }
 
-      if (progNum >= 0.2 && progNum < 0.4) {
+      if (progNum >= 0.3 && progNum < 0.6) {
         this.navLines[1].classList.add("active");
         this.navLines.forEach((line, i) => {
           if (i !== 1) {
@@ -156,26 +152,10 @@ export default class Work {
         });
       }
 
-      if (progNum >= 0.4 && progNum < 0.6) {
+      if (progNum >= 0.6) {
         this.navLines[2].classList.add("active");
         this.navLines.forEach((line, i) => {
           if (i !== 2) {
-            line.classList.remove("active");
-          }
-        });
-      }
-      if (progNum >= 0.6 && progNum < 0.8) {
-        this.navLines[3].classList.add("active");
-        this.navLines.forEach((line, i) => {
-          if (i !== 3) {
-            line.classList.remove("active");
-          }
-        });
-      }
-      if (progNum >= 0.75) {
-        this.navLines[4].classList.add("active");
-        this.navLines.forEach((line, i) => {
-          if (i !== 4) {
             line.classList.remove("active");
           }
         });
@@ -187,7 +167,7 @@ export default class Work {
   animateLinesMobile(progress) {
     if (progress !== this.previousProgressNavLine) {
       const progNum = +progress;
-      if (progNum >= 0 && progNum < 0.15) {
+      if (progNum >= 0 && progNum < 0.3) {
         this.navLines[0].classList.add("active");
         this.navLines.forEach((line, i) => {
           if (i !== 0) {
@@ -196,7 +176,7 @@ export default class Work {
         });
       }
 
-      if (progNum >= 0.3 && progNum < 0.4) {
+      if (progNum >= 0.3 && progNum < 0.6) {
         this.navLines[1].classList.add("active");
         this.navLines.forEach((line, i) => {
           if (i !== 1) {
@@ -205,26 +185,10 @@ export default class Work {
         });
       }
 
-      if (progNum >= 0.5 && progNum < 0.65) {
+      if (progNum >= 0.65) {
         this.navLines[2].classList.add("active");
         this.navLines.forEach((line, i) => {
           if (i !== 2) {
-            line.classList.remove("active");
-          }
-        });
-      }
-      if (progNum >= 0.8 && progNum < 0.9) {
-        this.navLines[3].classList.add("active");
-        this.navLines.forEach((line, i) => {
-          if (i !== 3) {
-            line.classList.remove("active");
-          }
-        });
-      }
-      if (progNum > 0.9) {
-        this.navLines[4].classList.add("active");
-        this.navLines.forEach((line, i) => {
-          if (i !== 4) {
             line.classList.remove("active");
           }
         });
@@ -235,6 +199,7 @@ export default class Work {
 
   animation() {
     if (this.progress !== this.previousProgress) {
+      console.log(this.progress)
       this.animateDown().then(() => {
         if (this.progress === "0.0") {
           document.querySelector(".number_inner > h1").style.color =
@@ -242,41 +207,37 @@ export default class Work {
           document.querySelector(".line_border").style.backgroundColor =
             this.colors[0];
           document.querySelector(".number_inner > h1").innerHTML = "01";
-          document.querySelector(".headline > h1").innerHTML = "PROJECT 1";
+          document.querySelector(".headline > h1").innerHTML = "CHILLFLIX";
+          document.querySelector(
+            ".desc > p"
+          ).innerHTML = `A Netflix clone with features like viewing all movies and TV
+          shows. Other functionalities include aunthentication (using
+          Fireabse), Search, Adding and deleting movie/tv to/from 'My
+          List' (Powered by Firebase/Firestore)`;
         }
 
-        if (this.progress === "0.2") {
+        if (this.progress === "0.3") {
           document.querySelector(".number_inner > h1").style.color =
             this.colors[1];
           document.querySelector(".line_border").style.backgroundColor =
             this.colors[1];
           document.querySelector(".number_inner > h1").innerHTML = "02";
-          document.querySelector(".headline > h1").innerHTML = "PROJECT 2";
+          document.querySelector(".headline > h1").innerHTML = "GOALGRAM";
+          document.querySelector(
+            ".desc > p"
+          ).innerHTML = `An Instagram clone with features includeing aunthentication (Firebase), Adding a post, commenting on the added post, following some other user, keeping track of followers and much more`;
         }
 
-        if (this.progress === "0.4") {
+        if (this.progress >= "0.6") {
           document.querySelector(".number_inner > h1").style.color =
             this.colors[2];
           document.querySelector(".line_border").style.backgroundColor =
             this.colors[2];
           document.querySelector(".number_inner > h1").innerHTML = "03";
-          document.querySelector(".headline > h1").innerHTML = "PROJECT 3";
-        }
-        if (this.progress === "0.6") {
-          document.querySelector(".number_inner > h1").style.color =
-            this.colors[3];
-          document.querySelector(".line_border").style.backgroundColor =
-            this.colors[3];
-          document.querySelector(".number_inner > h1").innerHTML = "04";
-          document.querySelector(".headline > h1").innerHTML = "PROJECT 4";
-        }
-        if (+this.progress >= 0.75) {
-          document.querySelector(".number_inner > h1").style.color =
-            this.colors[4];
-          document.querySelector(".line_border").style.backgroundColor =
-            this.colors[4];
-          document.querySelector(".number_inner > h1").innerHTML = "05";
-          document.querySelector(".headline > h1").innerHTML = "PROJECT 5";
+          document.querySelector(".headline > h1").innerHTML = "QUIZZY";
+          document.querySelector(
+            ".desc > p"
+          ).innerHTML = `A platform for hosting and playing quizzes. Includes features like hosting a public or private quiz. Additional features such as searching for quizzes, adding comments on the quiz and viewing your profile and lot more`;
         }
         this.animateUp();
         this.previousProgress = this.progress;
@@ -284,49 +245,47 @@ export default class Work {
     }
   }
   animationMobile() {
+    console.log(this.progress)
     if (this.progress !== this.previousProgress) {
       this.animateDown().then(() => {
-        if (+this.progress === 0) {
+        console.log(+this.progress)
+        if (+this.progress === 0.0) {
           document.querySelector(".number_inner > h1").style.color =
             this.colors[0];
           document.querySelector(".line_border").style.backgroundColor =
             this.colors[0];
           document.querySelector(".number_inner > h1").innerHTML = "01";
-          document.querySelector(".headline > h1").innerHTML = "PROJECT 1";
+          document.querySelector(".headline > h1").innerHTML = "CHILLFLIX";
+          document.querySelector(
+            ".desc > p"
+          ).innerHTML = `A Netflix clone with features like viewing all movies and TV
+          shows. Other functionalities include aunthentication (using
+          Fireabse), Search, Adding and deleting movie/tv to/from 'My
+          List' (Powered by Firebase/Firestore)`;
         }
 
-        if (+this.progress === 0.3) {
+        if (+this.progress === 0.5) {
           document.querySelector(".number_inner > h1").style.color =
             this.colors[1];
           document.querySelector(".line_border").style.backgroundColor =
             this.colors[1];
           document.querySelector(".number_inner > h1").innerHTML = "02";
-          document.querySelector(".headline > h1").innerHTML = "PROJECT 2";
+          document.querySelector(".headline > h1").innerHTML = "GOALGRAM";
+          document.querySelector(
+            ".desc > p"
+          ).innerHTML = `An Instagram clone with features includeing aunthentication (Firebase), Adding a post, commenting on the added post, following some other user, keeping track of followers and much more`;
         }
 
-        if (+this.progress === 0.5) {
+        if (+this.progress > 0.65) {
           document.querySelector(".number_inner > h1").style.color =
             this.colors[2];
           document.querySelector(".line_border").style.backgroundColor =
             this.colors[2];
           document.querySelector(".number_inner > h1").innerHTML = "03";
-          document.querySelector(".headline > h1").innerHTML = "PROJECT 3";
-        }
-        if (+this.progress === 0.8) {
-          document.querySelector(".number_inner > h1").style.color =
-            this.colors[3];
-          document.querySelector(".line_border").style.backgroundColor =
-            this.colors[3];
-          document.querySelector(".number_inner > h1").innerHTML = "04";
-          document.querySelector(".headline > h1").innerHTML = "PROJECT 4";
-        }
-        if (+this.progress >= 0.97) {
-          document.querySelector(".number_inner > h1").style.color =
-            this.colors[4];
-          document.querySelector(".line_border").style.backgroundColor =
-            this.colors[4];
-          document.querySelector(".number_inner > h1").innerHTML = "05";
-          document.querySelector(".headline > h1").innerHTML = "PROJECT 5";
+          document.querySelector(".headline > h1").innerHTML = "QUIZZY";
+          document.querySelector(
+            ".desc > p"
+          ).innerHTML = `A platform for hosting and playing quizzes. Includes features like hosting a public or private quiz. Additional features such as searching for quizzes, adding comments on the quiz and viewing your profile and lot more`;
         }
         this.animateUp();
         this.previousProgress = this.progress;

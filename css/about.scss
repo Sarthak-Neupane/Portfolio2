@@ -80,8 +80,8 @@
     }
 
     @media (max-width: 768px) {
-      height: 80%;
-      margin-top: 10%;
+      height: 100%;
+      // margin-top: 10%;
       padding-top: 0;
       flex-direction: column;
     }
@@ -130,7 +130,7 @@
       }
       
       @media (max-width: 768px) {
-        height: 50%;
+        height: 40%;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -144,7 +144,7 @@
         @media (max-width: 768px) {
           visibility: visible;
           object-fit: contain;
-          height: 250px;
+          height: 200px;
         }
       }
     }

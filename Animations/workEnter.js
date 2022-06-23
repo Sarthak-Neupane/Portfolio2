@@ -4,7 +4,7 @@ export default function workEnter(d) {
   return new Promise((resolve) => {
     const t1 = gsap.timeline();
     d.querySelector(".full").style.backgroundColor = "rgba(0,0,0,1)";
-    document.body.style.maxHeight = "700vh";
+    // document.body.style.maxHeight = "700vh";
     document.body.style.overflow = "scroll";
     t1.to(d.querySelector(".full"), {
       scaleY: 0,
