@@ -18,6 +18,8 @@ export default class Work {
     this.t3 = gsap.timeline();
     this.t4 = gsap.timeline();
 
+    console.log(options.dom)
+
     if (this.width > 1000) {
       this.sketch = new Sketch({
         dom: options.dom,
@@ -222,7 +224,7 @@ export default class Work {
           document.querySelector(".line_border").style.backgroundColor =
             this.colors[1];
           document.querySelector(".number_inner > h1").innerHTML = "02";
-          document.querySelector(".headline > h1").innerHTML = "GOALGRAM";
+          document.querySelector(".headline > h1").innerHTML = "GOALIE";
           document.querySelector(
             ".desc > p"
           ).innerHTML = `An Instagram clone with features includeing aunthentication (Firebase), Adding a post, commenting on the added post, following some other user, keeping track of followers and much more`;
@@ -234,10 +236,10 @@ export default class Work {
           document.querySelector(".line_border").style.backgroundColor =
             this.colors[2];
           document.querySelector(".number_inner > h1").innerHTML = "03";
-          document.querySelector(".headline > h1").innerHTML = "QUIZZY";
+          document.querySelector(".headline > h1").innerHTML = "Community Nepal";
           document.querySelector(
             ".desc > p"
-          ).innerHTML = `A platform for hosting and playing quizzes. Includes features like hosting a public or private quiz. Additional features such as searching for quizzes, adding comments on the quiz and viewing your profile and lot more`;
+          ).innerHTML = `A platform to host and apply for community events. Features include: aunthentication, hosting an event with sufficient details, applying for the event with automatic sending of the user profile, ability to cancel an application or the event, and a custom inbuilt calendar to view upcoming and past events.`;
         }
         this.animateUp();
         this.previousProgress = this.progress;
@@ -270,7 +272,7 @@ export default class Work {
           document.querySelector(".line_border").style.backgroundColor =
             this.colors[1];
           document.querySelector(".number_inner > h1").innerHTML = "02";
-          document.querySelector(".headline > h1").innerHTML = "GOALGRAM";
+          document.querySelector(".headline > h1").innerHTML = "GOALIE";
           document.querySelector(
             ".desc > p"
           ).innerHTML = `An Instagram clone with features includeing aunthentication (Firebase), Adding a post, commenting on the added post, following some other user, keeping track of followers and much more`;
@@ -282,10 +284,10 @@ export default class Work {
           document.querySelector(".line_border").style.backgroundColor =
             this.colors[2];
           document.querySelector(".number_inner > h1").innerHTML = "03";
-          document.querySelector(".headline > h1").innerHTML = "QUIZZY";
+          document.querySelector(".headline > h1").innerHTML = "Community Nepal";
           document.querySelector(
             ".desc > p"
-          ).innerHTML = `A platform for hosting and playing quizzes. Includes features like hosting a public or private quiz. Additional features such as searching for quizzes, adding comments on the quiz and viewing your profile and lot more`;
+          ).innerHTML = `A platform to host and apply for community events. Features include: aunthentication, hosting an event with sufficient details, applying for the event with automatic sending of the user profile, ability to cancel an application or the event, and a custom inbuilt calendar to view upcoming and past events.`;
         }
         this.animateUp();
         this.previousProgress = this.progress;

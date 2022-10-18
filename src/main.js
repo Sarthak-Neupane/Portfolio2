@@ -38,7 +38,6 @@ class Main {
     }
 
     if (window.location.pathname == "/work.html") {
-
       this.workAnim(true);
     }
   }
